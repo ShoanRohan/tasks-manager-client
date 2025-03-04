@@ -1,0 +1,53 @@
+<div #taskFormModal class="modal fade" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ taskToEdit ? 'עריכת משימה' : 'הוספת משימה' }}</h5>
+      </div>
+      <div class="modal-body">
+        <form [formGroup]="taskForm" (ngSubmit)="onSubmit()" dir="rtl">
+          <div class="mb-3">
+            <label for="title" class="form-label">כותרת משימה</label>
+            <input type="text" id="title" formControlName="title" class="form-control" required>
+            <div *ngIf="taskForm.get('title')?.invalid && taskForm.get('title')?.touched" class="text-danger">שדה חובה</div>
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">תיאור משימה</label>
+            <textarea id="description" formControlName="description" class="form-control"></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="priority" class="form-label">עדיפות</label>
+            <select id="priority" formControlName="priority" class="form-select" required>
+              <option *ngFor="let priority of priorities" [value]="priority">{{ priority }}</option>
+            </select>
+            <div *ngIf="taskForm.get('priority')?.invalid && taskForm.get('priority')?.touched" class="text-danger">
+              שדה חובה.            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="dueDate" class="form-label">תאריך יעד</label>
+            <input type="date" id="dueDate" formControlName="dueDate" class="form-control" required>
+            <div *ngIf="taskForm.get('dueDate')?.invalid && taskForm.get('dueDate')?.touched" class="text-danger">
+              שדה חובה.
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="status" class="form-label">סטטוס</label>
+            <select id="status" formControlName="status" class="form-select" required>
+              <option *ngFor="let status of statuses" [value]="status">{{ status }}</option>
+            </select>
+          </div>
+
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button *ngIf="taskToEdit" type="button" class="btn btn-secondary" (click)="closeModal()">ביטול</button>
+        <button *ngIf="taskToEdit" type="submit" class="btn btn-primary" (click)="onSubmit()">שמור שינויים</button>
+        <button *ngIf="!taskToEdit" type="submit" class="btn btn-primary"  (click)="onSubmit()">הוסף משימה</button>
+      </div>
+    </div>
+  </div>
+</div>

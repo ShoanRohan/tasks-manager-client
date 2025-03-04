@@ -1,0 +1,5 @@
+@import '../../app.component.css';
+.table-wrapper{
+    width: 90%;
+    margin: auto;
+}

@@ -1,0 +1,36 @@
+<div class="title">רשימת משימות</div>
+<button class="btn btn-primary  mb-3 primary-custom-buttom"  (click)="openTaskForm()" >הוספת משימה חדשה</button>
+
+<!-- <app-task-form  [taskToEdit]="choosenTask" *ngIf="popUpObs$ | async" (close)="closeModal()"></app-task-form> -->
+<app-task-form (taskUpdated)="onTaskUpdate($event)"></app-task-form>
+
+
+<div class="table-wrapper">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>מספר</th>
+        <th>כותרת</th>
+        <th>תיאור</th>
+        <th>עדיפות</th>
+        <th>תאריך יעד</th>
+        <th>סטטוס</th>
+        <th>פעולות</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{ task.id }}</td>
+        <td>{{ task.title }}</td>
+        <td>{{ task.description }}</td>
+        <td>{{ task.priority }}</td>
+        <td>{{ task.dueDate | date:'d/M/yy' }}</td>
+        <td>{{ task.status }}</td>
+        <td>
+          <button class="btn btn-light" (click)="openTaskForm(task)"><i class="bi bi-pencil-square"></i></button>
+          <button class="btn btn-danger" (click)="deleteTask(task.id)"><i class="bi bi-trash3-fill"></i></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
