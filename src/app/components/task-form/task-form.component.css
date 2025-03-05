@@ -1,0 +1,65 @@
+/* בסיס הסגנונות לכל הגדלים */
+.modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+}
+
+/* התאמות לרוחב מסך קטן מ-500px */
+@media (max-width: 500px) {
+    .modal-dialog {
+        max-width: 90%;
+        margin: 10px auto;
+        height: 68vh;
+    }
+
+    .modal-content {
+        height: 100%; /* המודל יתפוס את כל הגובה */
+        border-radius: 0; /* הסרת פינות מעוגלות במסך קטן */
+        border: none; /* הסרת מסגרת */
+    }
+
+    .modal-header {
+        padding: 1rem;
+    }
+
+    .modal-body {
+        padding: 1rem;
+        overflow-y: auto; /* גלילה אנכית אם התוכן ארוך */
+        flex-grow: 1; /* מאפשר לגוף לגדול ולמלא את החלל */
+    }
+
+    .modal-footer {
+        padding: 1rem;
+        justify-content: space-between; /* מפזר את הכפתורים */
+    }
+
+    /* התאמת השדות של הטופס */
+    .form-control,
+    .form-select {
+        width: 100%;
+        font-size: 0.9rem; /* הקטנת גודל פונט קלות */
+    }
+
+    .mb-3 {
+        margin-bottom: 0.75rem !important; /* הקטנת מרווחים */
+    }
+
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* התאמת כיוון הטקסט לימין עבור RTL */
+    [dir="rtl"] .modal-footer {
+        justify-content: space-between;
+    }
+}
+
+/* שיפור נוסף לנוחות שימוש */
+.modal.fade .modal-dialog {
+    transition: transform 0.3s ease-out;
+}
+
+.modal.show .modal-dialog {
+    transform: none;
+}

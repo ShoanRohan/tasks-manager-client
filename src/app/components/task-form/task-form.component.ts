@@ -1,7 +1,7 @@
 import { ChangeDetectorRef, Component, ElementRef, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Modal } from 'bootstrap';
-import { Subject, Subscription, takeUntil } from 'rxjs';
+import { Subject, takeUntil } from 'rxjs';
 import { TaskItem } from 'src/app/models/TaskItem';
 import { TaskPopUpFormService } from 'src/app/services/task-pop-up-form.service';
 import { TasksApiService } from 'src/app/services/tasks-api.service';
